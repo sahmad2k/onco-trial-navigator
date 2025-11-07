@@ -1,0 +1,1869 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CancerCare Connect - Patient Support Portal</title>
+  <style>
+    /* Design System CSS */
+    :root {
+      --color-white: rgba(255, 255, 255, 1);
+      --color-black: rgba(0, 0, 0, 1);
+      --color-cream-50: rgba(252, 252, 249, 1);
+      --color-cream-100: rgba(255, 255, 253, 1);
+      --color-gray-200: rgba(245, 245, 245, 1);
+      --color-gray-300: rgba(167, 169, 169, 1);
+      --color-gray-400: rgba(119, 124, 124, 1);
+      --color-slate-500: rgba(98, 108, 113, 1);
+      --color-brown-600: rgba(94, 82, 64, 1);
+      --color-charcoal-700: rgba(31, 33, 33, 1);
+      --color-charcoal-800: rgba(38, 40, 40, 1);
+      --color-slate-900: rgba(19, 52, 59, 1);
+      --color-teal-300: rgba(50, 184, 198, 1);
+      --color-teal-400: rgba(45, 166, 178, 1);
+      --color-teal-500: rgba(33, 128, 141, 1);
+      --color-teal-600: rgba(29, 116, 128, 1);
+      --color-teal-700: rgba(26, 104, 115, 1);
+      --color-teal-800: rgba(41, 150, 161, 1);
+      --color-red-400: rgba(255, 84, 89, 1);
+      --color-red-500: rgba(192, 21, 47, 1);
+      --color-orange-400: rgba(230, 129, 97, 1);
+      --color-orange-500: rgba(168, 75, 47, 1);
+      --color-brown-600-rgb: 94, 82, 64;
+      --color-teal-500-rgb: 33, 128, 141;
+      --color-slate-900-rgb: 19, 52, 59;
+      --color-slate-500-rgb: 98, 108, 113;
+      --color-red-500-rgb: 192, 21, 47;
+      --color-red-400-rgb: 255, 84, 89;
+      --color-orange-500-rgb: 168, 75, 47;
+      --color-orange-400-rgb: 230, 129, 97;
+      --color-bg-1: rgba(59, 130, 246, 0.08);
+      --color-bg-2: rgba(245, 158, 11, 0.08);
+      --color-bg-3: rgba(34, 197, 94, 0.08);
+      --color-bg-4: rgba(239, 68, 68, 0.08);
+      --color-bg-5: rgba(147, 51, 234, 0.08);
+      --color-bg-6: rgba(249, 115, 22, 0.08);
+      --color-bg-7: rgba(236, 72, 153, 0.08);
+      --color-bg-8: rgba(6, 182, 212, 0.08);
+      --color-background: var(--color-cream-50);
+      --color-surface: var(--color-cream-100);
+      --color-text: var(--color-slate-900);
+      --color-text-secondary: var(--color-slate-500);
+      --color-primary: var(--color-teal-500);
+      --color-primary-hover: var(--color-teal-600);
+      --color-primary-active: var(--color-teal-700);
+      --color-secondary: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-secondary-hover: rgba(var(--color-brown-600-rgb), 0.2);
+      --color-secondary-active: rgba(var(--color-brown-600-rgb), 0.25);
+      --color-border: rgba(var(--color-brown-600-rgb), 0.2);
+      --color-btn-primary-text: var(--color-cream-50);
+      --color-card-border: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-card-border-inner: rgba(var(--color-brown-600-rgb), 0.12);
+      --color-error: var(--color-red-500);
+      --color-success: var(--color-teal-500);
+      --color-warning: var(--color-orange-500);
+      --color-info: var(--color-slate-500);
+      --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
+      --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
+      --focus-ring: 0 0 0 3px var(--color-focus-ring);
+      --focus-outline: 2px solid var(--color-primary);
+      --status-bg-opacity: 0.15;
+      --status-border-opacity: 0.25;
+      --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      --color-success-rgb: 33, 128, 141;
+      --color-error-rgb: 192, 21, 47;
+      --color-warning-rgb: 168, 75, 47;
+      --color-info-rgb: 98, 108, 113;
+      --font-family-base: "FKGroteskNeue", "Geist", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-family-mono: "Berkeley Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --font-size-xs: 11px;
+      --font-size-sm: 12px;
+      --font-size-base: 14px;
+      --font-size-md: 14px;
+      --font-size-lg: 16px;
+      --font-size-xl: 18px;
+      --font-size-2xl: 20px;
+      --font-size-3xl: 24px;
+      --font-size-4xl: 30px;
+      --font-weight-normal: 400;
+      --font-weight-medium: 500;
+      --font-weight-semibold: 550;
+      --font-weight-bold: 600;
+      --line-height-tight: 1.2;
+      --line-height-normal: 1.5;
+      --letter-spacing-tight: -0.01em;
+      --space-0: 0;
+      --space-1: 1px;
+      --space-2: 2px;
+      --space-4: 4px;
+      --space-6: 6px;
+      --space-8: 8px;
+      --space-10: 10px;
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-20: 20px;
+      --space-24: 24px;
+      --space-32: 32px;
+      --radius-sm: 6px;
+      --radius-base: 8px;
+      --radius-md: 10px;
+      --radius-lg: 12px;
+      --radius-full: 9999px;
+      --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.04), 0 4px 6px -2px rgba(0, 0, 0, 0.02);
+      --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.15), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+      --duration-fast: 150ms;
+      --duration-normal: 250ms;
+      --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+      --container-sm: 640px;
+      --container-md: 768px;
+      --container-lg: 1024px;
+      --container-xl: 1280px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --color-gray-400-rgb: 119, 124, 124;
+        --color-teal-300-rgb: 50, 184, 198;
+        --color-gray-300-rgb: 167, 169, 169;
+        --color-gray-200-rgb: 245, 245, 245;
+        --color-bg-1: rgba(29, 78, 216, 0.15);
+        --color-bg-2: rgba(180, 83, 9, 0.15);
+        --color-bg-3: rgba(21, 128, 61, 0.15);
+        --color-bg-4: rgba(185, 28, 28, 0.15);
+        --color-bg-5: rgba(107, 33, 168, 0.15);
+        --color-bg-6: rgba(194, 65, 12, 0.15);
+        --color-bg-7: rgba(190, 24, 93, 0.15);
+        --color-bg-8: rgba(8, 145, 178, 0.15);
+        --color-background: var(--color-charcoal-700);
+        --color-surface: var(--color-charcoal-800);
+        --color-text: var(--color-gray-200);
+        --color-text-secondary: rgba(var(--color-gray-300-rgb), 0.7);
+        --color-primary: var(--color-teal-300);
+        --color-primary-hover: var(--color-teal-400);
+        --color-primary-active: var(--color-teal-800);
+        --color-secondary: rgba(var(--color-gray-400-rgb), 0.15);
+        --color-secondary-hover: rgba(var(--color-gray-400-rgb), 0.25);
+        --color-secondary-active: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-border: rgba(var(--color-gray-400-rgb), 0.3);
+        --color-error: var(--color-red-400);
+        --color-success: var(--color-teal-300);
+        --color-warning: var(--color-orange-400);
+        --color-info: var(--color-gray-300);
+        --color-focus-ring: rgba(var(--color-teal-300-rgb), 0.4);
+        --color-btn-primary-text: var(--color-slate-900);
+        --color-card-border: rgba(var(--color-gray-400-rgb), 0.2);
+        --color-card-border-inner: rgba(var(--color-gray-400-rgb), 0.15);
+        --shadow-inset-sm: inset 0 1px 0 rgba(255, 255, 255, 0.1), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+        --color-select-caret: rgba(var(--color-gray-200-rgb), 0.8);
+        --color-success-rgb: var(--color-teal-300-rgb);
+        --color-error-rgb: var(--color-red-400-rgb);
+        --color-warning-rgb: var(--color-orange-400-rgb);
+        --color-info-rgb: var(--color-gray-300-rgb);
+      }
+    }
+
+    @font-face {
+      font-family: 'FKGroteskNeue';
+      src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2') format('woff2');
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--font-family-base);
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: var(--line-height-normal);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .app-container {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header */
+    .app-header {
+      background: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-16);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: var(--space-16);
+      flex-wrap: wrap;
+    }
+
+    .app-title {
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+    }
+
+    .header-actions {
+      display: flex;
+      gap: var(--space-8);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Accessibility Controls */
+    .accessibility-controls {
+      display: flex;
+      gap: var(--space-8);
+      align-items: center;
+    }
+
+    .icon-btn {
+      background: var(--color-secondary);
+      border: 1px solid var(--color-border);
+      padding: var(--space-8);
+      border-radius: var(--radius-base);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-standard);
+      font-size: var(--font-size-sm);
+      color: var(--color-text);
+    }
+
+    .icon-btn:hover {
+      background: var(--color-secondary-hover);
+    }
+
+    .icon-btn.active {
+      background: var(--color-primary);
+      color: var(--color-btn-primary-text);
+      border-color: var(--color-primary);
+    }
+
+    /* Main Content */
+    .main-content {
+      flex: 1;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-24) var(--space-16);
+      width: 100%;
+    }
+
+    /* Views */
+    .view {
+      display: none;
+    }
+
+    .view.active {
+      display: block;
+    }
+
+    /* Cards */
+    .card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-24);
+      margin-bottom: var(--space-24);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .card-header {
+      margin-bottom: var(--space-20);
+    }
+
+    .card-title {
+      font-size: var(--font-size-2xl);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-8);
+      color: var(--color-text);
+    }
+
+    .card-subtitle {
+      font-size: var(--font-size-base);
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Forms */
+    .form-group {
+      margin-bottom: var(--space-20);
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: var(--space-8);
+      font-weight: var(--font-weight-medium);
+      font-size: var(--font-size-base);
+      color: var(--color-text);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: var(--space-12);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      font-size: var(--font-size-base);
+      background: var(--color-background);
+      color: var(--color-text);
+      font-family: var(--font-family-base);
+      transition: border-color var(--duration-fast) var(--ease-standard);
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: var(--focus-ring);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: var(--select-caret-light);
+      background-repeat: no-repeat;
+      background-position: right var(--space-12) center;
+      background-size: 16px;
+      padding-right: var(--space-32);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      select.form-control {
+        background-image: var(--select-caret-dark);
+      }
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: var(--space-12) var(--space-24);
+      border: none;
+      border-radius: var(--radius-base);
+      font-size: var(--font-size-base);
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      transition: all var(--duration-fast) var(--ease-standard);
+      text-align: center;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: var(--color-btn-primary-text);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-hover);
+    }
+
+    .btn-secondary {
+      background: var(--color-secondary);
+      color: var(--color-text);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      background: var(--color-secondary-hover);
+    }
+
+    .btn-block {
+      display: block;
+      width: 100%;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+    }
+
+    /* Grid Layout */
+    .grid {
+      display: grid;
+      gap: var(--space-16);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    /* Trial Cards */
+    .trial-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20);
+      margin-bottom: var(--space-16);
+      box-shadow: var(--shadow-sm);
+      transition: all var(--duration-normal) var(--ease-standard);
+    }
+
+    .trial-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: var(--color-primary);
+    }
+
+    .trial-header {
+      margin-bottom: var(--space-12);
+    }
+
+    .trial-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-8);
+      color: var(--color-text);
+    }
+
+    .trial-meta {
+      display: flex;
+      gap: var(--space-12);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-12);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-4) var(--space-12);
+      border-radius: var(--radius-full);
+      font-size: var(--font-size-sm);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .badge-success {
+      background: rgba(var(--color-success-rgb), 0.15);
+      color: var(--color-success);
+      border: 1px solid rgba(var(--color-success-rgb), 0.25);
+    }
+
+    .badge-info {
+      background: var(--color-bg-1);
+      color: var(--color-primary);
+    }
+
+    .badge-warning {
+      background: rgba(var(--color-warning-rgb), 0.15);
+      color: var(--color-warning);
+      border: 1px solid rgba(var(--color-warning-rgb), 0.25);
+    }
+
+    /* Navigator Cards */
+    .navigator-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20);
+      margin-bottom: var(--space-16);
+      display: flex;
+      gap: var(--space-16);
+      align-items: flex-start;
+    }
+
+    .navigator-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: var(--radius-full);
+      background: var(--color-primary);
+      color: var(--color-btn-primary-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xl);
+      font-weight: var(--font-weight-bold);
+      flex-shrink: 0;
+    }
+
+    .navigator-info {
+      flex: 1;
+    }
+
+    .navigator-name {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-4);
+    }
+
+    .navigator-details {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    /* Educational Content */
+    .info-box {
+      background: var(--color-bg-1);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-base);
+      padding: var(--space-16);
+      margin-bottom: var(--space-16);
+    }
+
+    .info-box-title {
+      font-size: var(--font-size-lg);
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-12);
+      color: var(--color-text);
+    }
+
+    .info-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .info-list li {
+      padding: var(--space-8) 0 var(--space-8) var(--space-24);
+      position: relative;
+    }
+
+    .info-list li:before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--color-success);
+      font-weight: var(--font-weight-bold);
+    }
+
+    /* Testimonials */
+    .testimonial {
+      background: var(--color-bg-3);
+      border-left: 4px solid var(--color-success);
+      padding: var(--space-20);
+      border-radius: var(--radius-base);
+      margin-bottom: var(--space-16);
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      margin-bottom: var(--space-12);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+    }
+
+    .testimonial-author {
+      font-weight: var(--font-weight-semibold);
+      color: var(--color-text-secondary);
+      font-size: var(--font-size-sm);
+    }
+
+    /* FAQ */
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+      padding: var(--space-16) 0;
+    }
+
+    .faq-question {
+      font-weight: var(--font-weight-semibold);
+      margin-bottom: var(--space-8);
+      color: var(--color-text);
+    }
+
+    .faq-answer {
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Chat Interface */
+    .chat-container {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-16);
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .chat-message {
+      margin-bottom: var(--space-12);
+      padding: var(--space-12);
+      border-radius: var(--radius-base);
+    }
+
+    .chat-message.patient {
+      background: var(--color-bg-1);
+      margin-left: 20%;
+    }
+
+    .chat-message.navigator {
+      background: var(--color-bg-3);
+      margin-right: 20%;
+    }
+
+    .chat-input-group {
+      display: flex;
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+
+    /* Alerts */
+    .alert {
+      padding: var(--space-16);
+      border-radius: var(--radius-base);
+      margin-bottom: var(--space-16);
+      border: 1px solid;
+    }
+
+    .alert-info {
+      background: var(--color-bg-1);
+      border-color: var(--color-primary);
+      color: var(--color-text);
+    }
+
+    .alert-success {
+      background: rgba(var(--color-success-rgb), 0.1);
+      border-color: var(--color-success);
+      color: var(--color-text);
+    }
+
+    .alert-warning {
+      background: rgba(var(--color-warning-rgb), 0.1);
+      border-color: var(--color-warning);
+      color: var(--color-text);
+    }
+
+    /* Progress */
+    .progress-bar {
+      background: var(--color-secondary);
+      height: 8px;
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      margin-bottom: var(--space-16);
+    }
+
+    .progress-fill {
+      background: var(--color-primary);
+      height: 100%;
+      transition: width var(--duration-normal) var(--ease-standard);
+    }
+
+    /* Accessibility Enhancements */
+    body.large-text {
+      font-size: 18px;
+    }
+
+    body.large-text .card-title {
+      font-size: 28px;
+    }
+
+    body.large-text .btn {
+      font-size: 18px;
+      padding: var(--space-16) var(--space-32);
+    }
+
+    body.high-contrast {
+      --color-background: #000;
+      --color-surface: #1a1a1a;
+      --color-text: #fff;
+      --color-border: #fff;
+    }
+
+    /* Loading State */
+    .loading {
+      text-align: center;
+      padding: var(--space-32);
+      color: var(--color-text-secondary);
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: var(--space-32);
+      color: var(--color-text-secondary);
+    }
+
+    .empty-state-icon {
+      font-size: 48px;
+      margin-bottom: var(--space-16);
+    }
+
+    /* Admin Dashboard */
+    .stat-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-card-border);
+      border-radius: var(--radius-lg);
+      padding: var(--space-20);
+      text-align: center;
+    }
+
+    .stat-value {
+      font-size: var(--font-size-4xl);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-primary);
+      margin-bottom: var(--space-8);
+    }
+
+    .stat-label {
+      font-size: var(--font-size-sm);
+      color: var(--color-text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .navigator-card {
+        flex-direction: column;
+      }
+
+      .btn-group {
+        flex-direction: column;
+      }
+
+      .btn-group .btn {
+        width: 100%;
+      }
+    }
+
+    /* Hidden utility */
+    .hidden {
+      display: none !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <h1 class="app-title">CancerCare Connect</h1>
+        <div class="header-actions">
+          <div class="accessibility-controls">
+            <button class="icon-btn" id="fontSizeBtn" title="Increase Text Size">A+</button>
+            <button class="icon-btn" id="contrastBtn" title="High Contrast">◐</button>
+            <button class="icon-btn" id="ttsBtn" title="Text to Speech">🔊</button>
+          </div>
+          <select id="languageSelect" class="form-control" style="width: auto; min-width: 120px;">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="zh">中文</option>
+            <option value="ar">العربية</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- Welcome View -->
+      <div id="welcomeView" class="view active">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Welcome to CancerCare Connect</h2>
+            <p class="card-subtitle">We are here to help you understand your cancer diagnosis, find clinical trials, and connect with patient navigators who speak your language and understand your culture.</p>
+          </div>
+          <form id="profileForm">
+            <div class="form-group">
+              <label class="form-label" for="patientName">Your Name</label>
+              <input type="text" id="patientName" class="form-control" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="age">Age</label>
+              <input type="number" id="age" class="form-control" min="18" max="120" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="cancerType">Cancer Type</label>
+              <select id="cancerType" class="form-control" required>
+                <option value="">Select your cancer type</option>
+                <option value="breast">Breast Cancer</option>
+                <option value="lung">Lung Cancer</option>
+                <option value="colorectal">Colorectal Cancer</option>
+                <option value="prostate">Prostate Cancer</option>
+                <option value="lymphoma">Lymphoma</option>
+                <option value="melanoma">Melanoma</option>
+                <option value="leukemia">Leukemia</option>
+                <option value="pancreatic">Pancreatic Cancer</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="stage">Cancer Stage (if known)</label>
+              <select id="stage" class="form-control">
+                <option value="">Not sure yet</option>
+                <option value="0">Stage 0</option>
+                <option value="I">Stage I</option>
+                <option value="II">Stage II</option>
+                <option value="III">Stage III</option>
+                <option value="IV">Stage IV</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="preferredLanguage">Preferred Language</label>
+              <select id="preferredLanguage" class="form-control" required>
+                <option value="en">English</option>
+                <option value="es">Spanish (Español)</option>
+                <option value="zh">Mandarin (中文)</option>
+                <option value="ar">Arabic (العربية)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="culturalBackground">Cultural Background</label>
+              <select id="culturalBackground" class="form-control">
+                <option value="">Prefer not to say</option>
+                <option value="hispanic">Hispanic/Latino</option>
+                <option value="african-american">African American</option>
+                <option value="asian">Asian American</option>
+                <option value="middle-eastern">Middle Eastern</option>
+                <option value="native-american">Native American</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="communicationStyle">How do you prefer to make health decisions?</label>
+              <select id="communicationStyle" class="form-control">
+                <option value="family-centered">With my family</option>
+                <option value="elder-respect">With guidance from elders</option>
+                <option value="direct">I want direct information</option>
+                <option value="relationship-first">I want to build trust first</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Are you an administrator?</label>
+              <div>
+                <label style="display: inline-flex; align-items: center; gap: 8px;">
+                  <input type="checkbox" id="isAdmin" style="width: auto;">
+                  <span>Yes, I am staff (access admin dashboard)</span>
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create My Profile &amp; Get Started</button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Education Dashboard -->
+      <div id="educationView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Understanding Your Cancer</h2>
+            <p class="card-subtitle">Learn about your diagnosis, treatment options, and what to expect.</p>
+          </div>
+          <div id="cancerInfo"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Important Information</h2>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title">Understanding Your Diagnosis</h3>
+            <ul class="info-list">
+              <li>Your diagnosis tells you what type of cancer you have and where it is</li>
+              <li>The stage tells you how much cancer there is and if it has spread</li>
+              <li>Your doctor uses tests like biopsies, scans, and blood work to diagnose cancer</li>
+              <li>You have time to learn about your diagnosis before making treatment decisions</li>
+              <li>It is OK to ask questions and get a second opinion</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3 class="info-box-title">Understanding Your Prognosis</h3>
+            <ul class="info-list">
+              <li>Prognosis means the likely outcome of your cancer</li>
+              <li>Statistics are based on groups of people, not individuals</li>
+              <li>Your prognosis depends on cancer type, stage, your health, and how cancer responds to treatment</li>
+              <li>Prognosis can change as you go through treatment</li>
+              <li>New treatments, including clinical trials, may improve your prognosis</li>
+            </ul>
+          </div>
+
+          <div class="info-box">
+            <h3 class="info-box-title">What Are Clinical Trials?</h3>
+            <ul class="info-list">
+              <li>Clinical trials are research studies that test new treatments or new ways to use existing treatments</li>
+              <li>Every cancer treatment used today was first tested in clinical trials</li>
+              <li>You have rights as a participant - you can leave a trial at any time</li>
+              <li>Clinical trials have strict safety rules and are closely watched by doctors and review boards</li>
+              <li>Participating in a trial may give you access to new treatments before they are widely available</li>
+              <li>Your care is free or partially covered, and you help future cancer patients</li>
+            </ul>
+          </div>
+
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="showView('trialMatchingView')">Find Clinical Trials for Me</button>
+            <button class="btn btn-secondary" onclick="showView('rightsView')">Learn About My Rights</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trial Matching View -->
+      <div id="trialMatchingView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Clinical Trials Matched to Your Profile</h2>
+            <p class="card-subtitle">Based on your cancer type and profile, we found these trials that you may qualify for.</p>
+          </div>
+          <div id="trialResults"></div>
+        </div>
+      </div>
+
+      <!-- Navigator Connection View -->
+      <div id="navigatorView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Connect with a Patient Navigator</h2>
+            <p class="card-subtitle">These navigators speak your language and understand your culture. They can help you understand your options and guide you through the process.</p>
+          </div>
+          <div id="navigatorList"></div>
+        </div>
+
+        <div id="chatSection" class="card hidden">
+          <div class="card-header">
+            <h2 class="card-title">Message Your Navigator</h2>
+          </div>
+          <div class="chat-container" id="chatMessages"></div>
+          <div class="chat-input-group">
+            <input type="text" id="chatInput" class="form-control" placeholder="Type your message...">
+            <button class="btn btn-primary" onclick="sendMessage()">Send</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cultural Customization View -->
+      <div id="culturalView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Cultural Resources &amp; Support</h2>
+            <p class="card-subtitle">Find resources that match your cultural background and values.</p>
+          </div>
+          <div id="culturalContent"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Success Stories from People Like You</h2>
+          </div>
+          <div id="testimonialsList"></div>
+        </div>
+      </div>
+
+      <!-- Patient Rights View -->
+      <div id="rightsView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Your Rights as a Patient</h2>
+            <p class="card-subtitle">It is important to know your rights when considering clinical trials.</p>
+          </div>
+          <div class="info-box">
+            <h3 class="info-box-title">Your Rights in Clinical Trials</h3>
+            <ul class="info-list">
+              <li>You have the right to know all the details about the study before you join</li>
+              <li>You can ask as many questions as you want</li>
+              <li>Joining a clinical trial is always voluntary - no one can force you</li>
+              <li>You can leave the study at any time for any reason</li>
+              <li>Your regular cancer treatment will not be affected if you choose not to join or if you leave</li>
+              <li>Your information is kept private and confidential</li>
+              <li>You will be told about any new information that might affect your decision</li>
+              <li>You have the right to bring family or friends to appointments</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Frequently Asked Questions</h2>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Will I get a placebo (sugar pill) instead of real treatment?</div>
+            <div class="faq-answer">In most cancer clinical trials, you will NOT get a placebo alone. You will either get the new treatment plus standard care, or just standard care. Your doctor will explain exactly what you will receive. Placebos alone are rarely used in cancer treatment trials.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">How much will it cost?</div>
+            <div class="faq-answer">The study drug and study-related tests are usually free. Your insurance covers your regular cancer care as it normally would. Some trials offer help with travel costs. Your navigator can help you understand all costs before you decide.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">What if the trial makes me worse?</div>
+            <div class="faq-answer">All clinical trials have safety monitoring. Doctors watch you closely and will stop the trial drug if you have serious side effects. You can always leave the trial and return to standard treatment. Your safety is the top priority.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Can I still see my regular doctor?</div>
+            <div class="faq-answer">Yes! Your regular oncologist will work with the trial team. You keep your regular doctor and they stay informed about your care. The trial team and your doctor work together for you.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">Am I helping others by joining a trial?</div>
+            <div class="faq-answer">Yes! Every person who joins a clinical trial helps doctors learn more about treating cancer. You may help yourself and you definitely help future patients. Your participation matters.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Caregiver Portal View -->
+      <div id="caregiverView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Caregiver Portal</h2>
+            <p class="card-subtitle">Access educational materials and resources to support your loved one.</p>
+          </div>
+          <div class="alert alert-info">
+            <strong>For Family &amp; Caregivers:</strong> This portal gives you read-only access to educational materials, trial information, and resources. You can help your loved one understand their options and support them through their journey.
+          </div>
+          <div id="caregiverContent"></div>
+        </div>
+      </div>
+
+      <!-- Admin Dashboard View -->
+      <div id="adminView" class="view">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Analytics Dashboard</h2>
+            <p class="card-subtitle">User engagement and diversity metrics</p>
+          </div>
+          <div class="grid grid-2">
+            <div class="stat-card">
+              <div class="stat-value" id="totalUsers">0</div>
+              <div class="stat-label">Total Users</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="trialMatches">0</div>
+              <div class="stat-label">Trial Matches</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="navigatorConnections">0</div>
+              <div class="stat-label">Navigator Connections</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-value" id="diversityScore">0%</div>
+              <div class="stat-label">Diversity Reach</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Application Data
+    const cancerTypes = {
+      breast: {
+        id: 'breast',
+        name: 'Breast Cancer',
+        description: 'Cancer that forms in breast tissue, most commonly in the ducts or lobules.',
+        simpleExplanation: 'Breast cancer happens when cells in your breast grow in an abnormal way. It can be treated in many ways, including surgery, medicine, and radiation.',
+        stages: ['Stage 0 (DCIS)', 'Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Surgery (Lumpectomy/Mastectomy)', 'Chemotherapy', 'Radiation', 'Hormone Therapy', 'Targeted Therapy', 'Clinical Trials']
+      },
+      lung: {
+        id: 'lung',
+        name: 'Lung Cancer',
+        description: 'Cancer that begins in the lungs, often in the cells lining air passages.',
+        simpleExplanation: 'Lung cancer starts when cells in your lungs begin to grow out of control. There are different types, and many treatment options are available.',
+        stages: ['Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Surgery', 'Chemotherapy', 'Radiation', 'Immunotherapy', 'Targeted Therapy', 'Clinical Trials']
+      },
+      colorectal: {
+        id: 'colorectal',
+        name: 'Colorectal Cancer',
+        description: 'Cancer that starts in the colon or rectum.',
+        simpleExplanation: 'Colorectal cancer begins in your colon (large intestine) or rectum. It usually starts as small growths called polyps that can become cancer over time.',
+        stages: ['Stage 0', 'Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Surgery', 'Chemotherapy', 'Radiation', 'Targeted Therapy', 'Immunotherapy', 'Clinical Trials']
+      },
+      prostate: {
+        id: 'prostate',
+        name: 'Prostate Cancer',
+        description: 'Cancer that occurs in the prostate gland in men.',
+        simpleExplanation: 'Prostate cancer grows in the prostate, a small gland that makes fluid for semen. Many prostate cancers grow slowly and may not cause problems.',
+        stages: ['Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Active Surveillance', 'Surgery', 'Radiation', 'Hormone Therapy', 'Chemotherapy', 'Clinical Trials']
+      },
+      lymphoma: {
+        id: 'lymphoma',
+        name: 'Lymphoma',
+        description: 'Cancer that begins in infection-fighting cells of the immune system.',
+        simpleExplanation: 'Lymphoma is cancer of the lymph system, which is part of your immune system that fights infections. It affects white blood cells called lymphocytes.',
+        stages: ['Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Chemotherapy', 'Radiation', 'Immunotherapy', 'Targeted Therapy', 'Stem Cell Transplant', 'Clinical Trials']
+      },
+      melanoma: {
+        id: 'melanoma',
+        name: 'Melanoma',
+        description: 'The most serious type of skin cancer.',
+        simpleExplanation: 'Melanoma is a type of skin cancer that starts in cells that make skin color (melanin). It can spread to other parts of the body if not caught early.',
+        stages: ['Stage 0', 'Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Surgery', 'Immunotherapy', 'Targeted Therapy', 'Radiation', 'Chemotherapy', 'Clinical Trials']
+      },
+      leukemia: {
+        id: 'leukemia',
+        name: 'Leukemia',
+        description: 'Cancer of blood-forming tissues, including bone marrow.',
+        simpleExplanation: 'Leukemia is cancer of your blood cells. It starts in your bone marrow, where blood is made, and affects white blood cells.',
+        stages: ['Acute', 'Chronic', 'Various risk categories'],
+        treatments: ['Chemotherapy', 'Targeted Therapy', 'Radiation', 'Stem Cell Transplant', 'Immunotherapy', 'Clinical Trials']
+      },
+      pancreatic: {
+        id: 'pancreatic',
+        name: 'Pancreatic Cancer',
+        description: 'Cancer that forms in the cells of the pancreas.',
+        simpleExplanation: 'Pancreatic cancer starts in your pancreas, an organ that helps with digestion and controls blood sugar. It is often found at later stages.',
+        stages: ['Stage I', 'Stage II', 'Stage III', 'Stage IV'],
+        treatments: ['Surgery', 'Chemotherapy', 'Radiation', 'Targeted Therapy', 'Immunotherapy', 'Clinical Trials']
+      }
+    };
+
+    // User location storage
+    let userLocation = null;
+
+    // Cancer type mapping for ClinicalTrials.gov API
+    const cancerTypeMapping = {
+      'breast': ['breast cancer', 'breast neoplasm', 'breast carcinoma'],
+      'lung': ['lung cancer', 'lung neoplasm', 'non-small cell lung cancer', 'NSCLC', 'small cell lung cancer'],
+      'colorectal': ['colorectal cancer', 'colon cancer', 'rectal cancer', 'colon neoplasm'],
+      'prostate': ['prostate cancer', 'prostate neoplasm', 'prostate carcinoma'],
+      'lymphoma': ['lymphoma', 'hodgkin lymphoma', 'non-hodgkin lymphoma', 'NHL'],
+      'melanoma': ['melanoma', 'skin cancer', 'cutaneous melanoma'],
+      'leukemia': ['leukemia', 'acute myeloid leukemia', 'AML', 'chronic lymphocytic leukemia', 'CLL'],
+      'pancreatic': ['pancreatic cancer', 'pancreatic neoplasm', 'pancreatic carcinoma']
+    };
+
+    // Haversine formula for distance calculation
+    function calculateDistance(lat1, lon1, lat2, lon2) {
+      const R = 3959; // Earth's radius in miles
+      const dLat = (lat2 - lat1) * Math.PI / 180;
+      const dLon = (lon2 - lon1) * Math.PI / 180;
+      const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+                Math.sin(dLon / 2) * Math.sin(dLon / 2);
+      const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+      return R * c;
+    }
+
+    // Get user location via browser geolocation
+    async function getUserLocation() {
+      return new Promise((resolve, reject) => {
+        if (!navigator.geolocation) {
+          reject(new Error('Geolocation not supported'));
+          return;
+        }
+        
+        navigator.geolocation.getCurrentPosition(
+          position => {
+            resolve({
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            });
+          },
+          error => {
+            reject(error);
+          }
+        );
+      });
+    }
+
+    // Fetch trials from ClinicalTrials.gov API
+    async function fetchClinicalTrials(cancerType, maxResults = 20) {
+      try {
+        const conditions = cancerTypeMapping[cancerType] || [cancerType];
+        const conditionQuery = conditions[0]; // Use primary condition
+        
+        // Build API query
+        const apiUrl = `https://clinicaltrials.gov/api/v2/studies?query.cond=${encodeURIComponent(conditionQuery)}&query.term=AREA[OverallStatus]Recruiting&pageSize=${maxResults}&format=json`;
+        
+        const response = await fetch(apiUrl);
+        
+        if (!response.ok) {
+          throw new Error(`API request failed: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        return parseTrialData(data);
+      } catch (error) {
+        console.error('Error fetching trials:', error);
+        throw error;
+      }
+    }
+
+    // Parse trial data from API response
+    function parseTrialData(apiResponse) {
+      if (!apiResponse.studies || apiResponse.studies.length === 0) {
+        return [];
+      }
+
+      return apiResponse.studies.map(study => {
+        const protocolSection = study.protocolSection || {};
+        const identificationModule = protocolSection.identificationModule || {};
+        const statusModule = protocolSection.statusModule || {};
+        const descriptionModule = protocolSection.descriptionModule || {};
+        const conditionsModule = protocolSection.conditionsModule || {};
+        const eligibilityModule = protocolSection.eligibilityModule || {};
+        const contactsLocationsModule = protocolSection.contactsLocationsModule || {};
+        const designModule = protocolSection.designModule || {};
+        const sponsorCollaboratorsModule = protocolSection.sponsorCollaboratorsModule || {};
+
+        // Extract locations
+        const locations = contactsLocationsModule.locations || [];
+        const primaryLocation = locations[0] || {};
+
+        // Extract eligibility
+        const eligibilityCriteria = eligibilityModule.eligibilityCriteria || 'Not specified';
+        const minAge = eligibilityModule.minimumAge || 'N/A';
+        const maxAge = eligibilityModule.maximumAge || 'N/A';
+
+        return {
+          id: identificationModule.nctId || 'Unknown',
+          title: identificationModule.briefTitle || 'No title available',
+          status: statusModule.overallStatus || 'Unknown',
+          phase: designModule.phases ? designModule.phases.join(', ') : 'Not specified',
+          description: descriptionModule.briefSummary || 'No description available',
+          conditions: conditionsModule.conditions || [],
+          eligibility: eligibilityCriteria.substring(0, 500) + '...', // Truncate for display
+          minAge: minAge,
+          maxAge: maxAge,
+          locations: locations,
+          primaryLocation: {
+            facility: primaryLocation.facility || 'Not specified',
+            city: primaryLocation.city || '',
+            state: primaryLocation.state || '',
+            country: primaryLocation.country || '',
+            latitude: primaryLocation.geoPoint?.lat,
+            longitude: primaryLocation.geoPoint?.lon
+          },
+          sponsor: sponsorCollaboratorsModule.leadSponsor?.name || 'Not specified',
+          studyType: designModule.studyType || 'Interventional',
+          lastUpdate: statusModule.lastUpdatePostDateStruct?.date || 'Unknown'
+        };
+      });
+    }
+
+    // Calculate match score for trials
+    function calculateMatchScore(trial, profile, userLoc) {
+      let score = 0;
+      
+      // Age match (30 points)
+      if (trial.minAge && trial.maxAge) {
+        const minAgeNum = parseInt(trial.minAge);
+        const maxAgeNum = parseInt(trial.maxAge);
+        if (!isNaN(minAgeNum) && !isNaN(maxAgeNum)) {
+          if (profile.age >= minAgeNum && profile.age <= maxAgeNum) {
+            score += 30;
+          }
+        } else {
+          score += 15; // Partial credit if age range unclear
+        }
+      } else {
+        score += 15;
+      }
+      
+      // Status (20 points)
+      if (trial.status === 'Recruiting' || trial.status === 'RECRUITING') {
+        score += 20;
+      } else if (trial.status === 'Not yet recruiting') {
+        score += 10;
+      }
+      
+      // Distance (30 points)
+      if (userLoc && trial.primaryLocation.latitude && trial.primaryLocation.longitude) {
+        const distance = calculateDistance(
+          userLoc.latitude,
+          userLoc.longitude,
+          trial.primaryLocation.latitude,
+          trial.primaryLocation.longitude
+        );
+        trial.distance = Math.round(distance);
+        
+        if (distance < 25) score += 30;
+        else if (distance < 50) score += 20;
+        else if (distance < 100) score += 10;
+        else if (distance < 200) score += 5;
+      } else {
+        trial.distance = null;
+      }
+      
+      // Phase preference (20 points) - Phase 2 and 3 are typically better for patients
+      if (trial.phase && (trial.phase.includes('2') || trial.phase.includes('3'))) {
+        score += 20;
+      } else if (trial.phase && trial.phase.includes('4')) {
+        score += 15;
+      } else if (trial.phase) {
+        score += 10;
+      }
+      
+      return score;
+    }
+
+    const navigators = [
+      {
+        id: 'nav001',
+        name: 'Maria Rodriguez',
+        languages: ['English', 'Spanish'],
+        culturalBackground: 'Hispanic/Latina',
+        specialties: ['Breast Cancer', 'Colorectal Cancer'],
+        bio: 'Maria is a certified patient navigator with 8 years of experience helping Spanish-speaking patients understand their cancer diagnosis and treatment options. She is a breast cancer survivor herself.',
+        availability: 'Monday-Friday 9am-5pm'
+      },
+      {
+        id: 'nav002',
+        name: 'Dr. James Washington',
+        languages: ['English'],
+        culturalBackground: 'African American',
+        specialties: ['Prostate Cancer', 'Lung Cancer', 'Clinical Trials'],
+        bio: 'Dr. Washington is a community health educator who has helped over 500 patients navigate clinical trial enrollment. He focuses on building trust and addressing concerns about medical research.',
+        availability: 'Tuesday-Saturday 10am-6pm'
+      },
+      {
+        id: 'nav003',
+        name: 'Li Wei Chen',
+        languages: ['English', 'Mandarin', 'Cantonese'],
+        culturalBackground: 'Asian American',
+        specialties: ['Lung Cancer', 'Liver Cancer', 'Gastric Cancer'],
+        bio: 'Li Wei has 10 years of experience as a patient advocate and navigator in Asian American communities. She helps families understand treatment options and coordinates care.',
+        availability: 'Monday-Friday 8am-4pm'
+      },
+      {
+        id: 'nav004',
+        name: 'Fatima Al-Sayed',
+        languages: ['English', 'Arabic'],
+        culturalBackground: 'Middle Eastern',
+        specialties: ['All Cancer Types', 'Faith-Based Support'],
+        bio: 'Fatima is a nurse navigator who specializes in culturally sensitive care for Middle Eastern and Muslim patients. She helps patients understand how treatment fits with their faith and values.',
+        availability: 'Sunday-Thursday 9am-5pm'
+      },
+      {
+        id: 'nav005',
+        name: 'Sarah Blackfeather',
+        languages: ['English'],
+        culturalBackground: 'Native American',
+        specialties: ['All Cancer Types', 'Rural Health'],
+        bio: 'Sarah works with Native American communities and rural patients. She understands the unique challenges of distance, traditional medicine, and accessing specialty care.',
+        availability: 'Monday-Friday 9am-5pm'
+      }
+    ];
+
+    const testimonials = [
+      {
+        name: 'Maria G.',
+        background: 'Hispanic, 54, Breast Cancer Survivor',
+        quote: 'I was scared to join a clinical trial because I thought they would experiment on me. My navigator Maria explained everything in Spanish and connected me with other Latina women who had been in trials. The trial gave me access to a new medicine that saved my life.',
+        trialType: 'Immunotherapy for Breast Cancer'
+      },
+      {
+        name: 'James T.',
+        background: 'African American, 67, Prostate Cancer',
+        quote: 'At first, I did not trust clinical trials because of what happened at Tuskegee. Dr. Washington took time to explain how trials work today - all the protections and my rights. I could leave anytime. The trial team treated me with respect and I got excellent care.',
+        trialType: 'Targeted Therapy for Prostate Cancer'
+      },
+      {
+        name: 'Lin C.',
+        background: 'Chinese American, 61, Lung Cancer',
+        quote: 'Li Wei helped my whole family understand my diagnosis. In Chinese culture, we make decisions together. She explained everything in Mandarin and helped us see that the clinical trial was giving me the best chance. The medicine worked and I am still here three years later.',
+        trialType: 'EGFR Inhibitor for Lung Cancer'
+      }
+    ];
+
+    const culturalResources = {
+      'family-centered': {
+        title: 'Family-Centered Decision Making',
+        content: 'We understand that many families make health decisions together. You can bring family members to all appointments and include them in discussions.'
+      },
+      'elder-respect': {
+        title: 'Elder Wisdom and Guidance',
+        content: 'We respect the wisdom of elders and welcome their involvement in your care decisions.'
+      },
+      'direct': {
+        title: 'Direct Communication',
+        content: 'We provide clear, straightforward information about your diagnosis and treatment options.'
+      },
+      'relationship-first': {
+        title: 'Building Trust',
+        content: 'We take time to build a trusting relationship before discussing treatment decisions.'
+      }
+    };
+
+    // Application State
+    let currentProfile = {};
+    let selectedNavigator = null;
+    let chatHistory = [];
+    let stats = {
+      totalUsers: 0,
+      trialMatches: 0,
+      navigatorConnections: 0,
+      diversityScore: 0
+    };
+
+    // Accessibility State
+    let largeTextEnabled = false;
+    let highContrastEnabled = false;
+    let ttsEnabled = false;
+
+    // Initialize app
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set up event listeners
+      document.getElementById('profileForm').addEventListener('submit', handleProfileSubmit);
+      document.getElementById('languageSelect').addEventListener('change', handleLanguageChange);
+      document.getElementById('fontSizeBtn').addEventListener('click', toggleLargeText);
+      document.getElementById('contrastBtn').addEventListener('click', toggleHighContrast);
+      document.getElementById('ttsBtn').addEventListener('click', toggleTTS);
+    });
+
+    // Profile submission
+    function handleProfileSubmit(e) {
+      e.preventDefault();
+      
+      currentProfile = {
+        name: document.getElementById('patientName').value,
+        age: parseInt(document.getElementById('age').value),
+        cancerType: document.getElementById('cancerType').value,
+        stage: document.getElementById('stage').value,
+        language: document.getElementById('preferredLanguage').value,
+        culturalBackground: document.getElementById('culturalBackground').value,
+        communicationStyle: document.getElementById('communicationStyle').value,
+        isAdmin: document.getElementById('isAdmin').checked
+      };
+
+      // Update language
+      document.getElementById('languageSelect').value = currentProfile.language;
+      
+      // Update stats
+      stats.totalUsers++;
+      updateAdminDashboard();
+
+      // Show education view
+      showView('educationView');
+      displayCancerInfo();
+    }
+
+    // View management
+    function showView(viewId) {
+      // Hide all views
+      document.querySelectorAll('.view').forEach(view => {
+        view.classList.remove('active');
+      });
+
+      // Show selected view
+      document.getElementById(viewId).classList.add('active');
+
+      // Special handling for specific views
+      if (viewId === 'trialMatchingView') {
+        displayTrialMatches();
+      } else if (viewId === 'navigatorView') {
+        displayNavigators();
+      } else if (viewId === 'culturalView') {
+        displayCulturalResources();
+        displayTestimonials();
+      } else if (viewId === 'caregiverView') {
+        displayCaregiverContent();
+      } else if (viewId === 'adminView') {
+        if (!currentProfile.isAdmin) {
+          alert('Access denied. Admin credentials required.');
+          return;
+        }
+        updateAdminDashboard();
+      }
+
+      // Scroll to top
+      window.scrollTo(0, 0);
+    }
+
+    // Display cancer information
+    function displayCancerInfo() {
+      const cancerInfo = cancerTypes[currentProfile.cancerType];
+      if (!cancerInfo) return;
+
+      const container = document.getElementById('cancerInfo');
+      container.innerHTML = `
+        <div class="info-box">
+          <h3 class="info-box-title">${cancerInfo.name}</h3>
+          <p style="margin-bottom: 16px; line-height: 1.6;">${cancerInfo.simpleExplanation}</p>
+          <p style="margin-bottom: 8px; font-weight: 500;">Common Stages:</p>
+          <p style="margin-bottom: 16px; color: var(--color-text-secondary);">${cancerInfo.stages.join(', ')}</p>
+          <p style="margin-bottom: 8px; font-weight: 500;">Treatment Options:</p>
+          <ul class="info-list">
+            ${cancerInfo.treatments.map(t => `<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+      `;
+    }
+
+    // Display trial matches with real API data
+    async function displayTrialMatches() {
+      const container = document.getElementById('trialResults');
+      
+      // Show loading state
+      container.innerHTML = `
+        <div class="loading">
+          <div style="font-size: 48px; margin-bottom: 16px;">⏳</div>
+          <h3>Finding Clinical Trials for You...</h3>
+          <p style="color: var(--color-text-secondary);">Searching ClinicalTrials.gov database...</p>
+        </div>
+      `;
+
+      try {
+        // Get user location
+        try {
+          userLocation = await getUserLocation();
+        } catch (locError) {
+          console.log('Location access denied, trials will show without distance');
+          userLocation = null;
+        }
+
+        // Fetch trials from API
+        const trials = await fetchClinicalTrials(currentProfile.cancerType);
+
+        if (trials.length === 0) {
+          container.innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">🔍</div>
+              <h3 style="margin-bottom: 12px;">No Active Trials Found</h3>
+              <p style="margin-bottom: 16px; color: var(--color-text-secondary);">We did not find actively recruiting trials for ${cancerTypes[currentProfile.cancerType].name} at this time.</p>
+              <div class="alert alert-info">
+                <strong>What to do next:</strong><br>
+                • Check back regularly - new trials open frequently<br>
+                • Talk to your doctor about clinical trials<br>
+                • Connect with a patient navigator who can help you search<br>
+                • Consider trials for similar cancer types<br>
+                • Visit <a href="https://clinicaltrials.gov" target="_blank">ClinicalTrials.gov</a> directly
+              </div>
+              <button class="btn btn-primary" onclick="showView('navigatorView')">Connect with a Navigator</button>
+            </div>
+          `;
+          return;
+        }
+
+        // Calculate match scores and sort
+        trials.forEach(trial => {
+          trial.matchScore = calculateMatchScore(trial, currentProfile, userLocation);
+        });
+        trials.sort((a, b) => b.matchScore - a.matchScore);
+
+        // Take top 10 matches
+        const topTrials = trials.slice(0, 10);
+
+        stats.trialMatches += topTrials.length;
+        updateAdminDashboard();
+
+        container.innerHTML = `
+          <div class="alert alert-success">
+            <strong>Great news!</strong> We found ${trials.length} clinical trial${trials.length > 1 ? 's' : ''} for ${cancerTypes[currentProfile.cancerType].name}. Showing the top ${topTrials.length} matches based on your profile.
+          </div>
+          ${!userLocation ? '<div class="alert alert-info"><strong>Tip:</strong> Enable location services to see distances to trial sites.</div>' : ''}
+          ${topTrials.map(trial => {
+            const locationStr = trial.primaryLocation.city && trial.primaryLocation.state 
+              ? `${trial.primaryLocation.facility}, ${trial.primaryLocation.city}, ${trial.primaryLocation.state}` 
+              : trial.primaryLocation.facility;
+            const distanceStr = trial.distance !== null ? `${trial.distance} miles away` : 'Distance unknown';
+            
+            return `
+              <div class="trial-card">
+                <div class="trial-header">
+                  <h3 class="trial-title">${trial.title}</h3>
+                  <div class="trial-meta">
+                    <span class="badge badge-success">${trial.status}</span>
+                    <span class="badge badge-info">${trial.phase}</span>
+                    ${trial.distance !== null ? `<span class="badge badge-warning">${distanceStr}</span>` : ''}
+                    <span class="badge badge-info">Match: ${trial.matchScore}%</span>
+                  </div>
+                </div>
+                <p style="margin-bottom: 16px; line-height: 1.6;">${trial.description}</p>
+                <div style="margin-bottom: 12px;">
+                  <strong style="display: block; margin-bottom: 8px;">Trial ID:</strong>
+                  <a href="https://clinicaltrials.gov/study/${trial.id}" target="_blank" style="color: var(--color-primary);">${trial.id}</a>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong style="display: block; margin-bottom: 8px;">Eligibility Requirements:</strong>
+                  <p style="color: var(--color-text-secondary); font-size: 14px; line-height: 1.6;">${trial.eligibility}</p>
+                  <p style="color: var(--color-text-secondary); font-size: 14px; margin-top: 8px;"><strong>Age Range:</strong> ${trial.minAge} - ${trial.maxAge}</p>
+                </div>
+                <div style="margin-bottom: 12px;">
+                  <strong style="display: block; margin-bottom: 8px;">Location:</strong>
+                  <p style="color: var(--color-text-secondary);">${locationStr}</p>
+                </div>
+                <div style="margin-bottom: 16px;">
+                  <strong>Sponsor:</strong> <span style="color: var(--color-text-secondary);">${trial.sponsor}</span>
+                </div>
+                <div class="btn-group">
+                  <a href="https://clinicaltrials.gov/study/${trial.id}" target="_blank" class="btn btn-primary">View Full Details on ClinicalTrials.gov</a>
+                  <button class="btn btn-secondary" onclick="showView('navigatorView')">Talk to Navigator</button>
+                </div>
+              </div>
+            `;
+          }).join('')}
+          <div class="btn-group">
+            <button class="btn btn-secondary" onclick="showView('rightsView')">Learn About Your Rights</button>
+            <button class="btn btn-secondary" onclick="showView('navigatorView')">Connect with a Navigator</button>
+          </div>
+          <div class="alert alert-info" style="margin-top: 24px;">
+            <strong>Important:</strong> This tool helps you find trials but is not medical advice. Always discuss clinical trial participation with your healthcare team. Your navigator can help you understand which trials might be right for you.
+          </div>
+        `;
+      } catch (error) {
+        console.error('Error loading trials:', error);
+        container.innerHTML = `
+          <div class="alert alert-warning">
+            <strong>Unable to Load Trials</strong><br>
+            We encountered an error connecting to ClinicalTrials.gov. This may be due to network connectivity or API availability.
+          </div>
+          <div class="alert alert-info">
+            <strong>What to do:</strong><br>
+            • Try again in a few moments<br>
+            • Visit <a href="https://clinicaltrials.gov" target="_blank">ClinicalTrials.gov</a> directly<br>
+            • Connect with a patient navigator for assistance<br>
+            • Contact your healthcare provider
+          </div>
+          <div class="btn-group">
+            <button class="btn btn-primary" onclick="displayTrialMatches()">Try Again</button>
+            <button class="btn btn-secondary" onclick="showView('navigatorView')">Connect with Navigator</button>
+          </div>
+        `;
+      }
+    }
+
+    // Display navigators
+    function displayNavigators() {
+      const container = document.getElementById('navigatorList');
+      
+      // Match navigators by language and cancer type
+      let matchedNavigators = navigators.filter(nav => {
+        const languageMatch = nav.languages.some(lang => {
+          if (currentProfile.language === 'en') return lang === 'English';
+          if (currentProfile.language === 'es') return lang === 'Spanish';
+          if (currentProfile.language === 'zh') return lang === 'Mandarin' || lang === 'Cantonese';
+          if (currentProfile.language === 'ar') return lang === 'Arabic';
+          return false;
+        });
+        
+        const cancerTypeName = cancerTypes[currentProfile.cancerType]?.name;
+        const cancerMatch = nav.specialties.includes(cancerTypeName) || nav.specialties.includes('All Cancer Types');
+        
+        return languageMatch || cancerMatch;
+      });
+
+      // If no matches, show all navigators
+      if (matchedNavigators.length === 0) {
+        matchedNavigators = navigators;
+      }
+
+      container.innerHTML = matchedNavigators.map(nav => `
+        <div class="navigator-card">
+          <div class="navigator-avatar">${nav.name.split(' ').map(n => n[0]).join('')}</div>
+          <div class="navigator-info">
+            <div class="navigator-name">${nav.name}</div>
+            <div class="navigator-details">
+              <strong>Languages:</strong> ${nav.languages.join(', ')}<br>
+              <strong>Specialties:</strong> ${nav.specialties.join(', ')}<br>
+              <strong>Available:</strong> ${nav.availability}
+            </div>
+            <p style="margin: 12px 0; line-height: 1.6;">${nav.bio}</p>
+            <button class="btn btn-primary" onclick="connectWithNavigator('${nav.id}')">Connect with ${nav.name.split(' ')[0]}</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Connect with navigator
+    function connectWithNavigator(navId) {
+      selectedNavigator = navigators.find(n => n.id === navId);
+      if (!selectedNavigator) return;
+
+      stats.navigatorConnections++;
+      updateAdminDashboard();
+
+      document.getElementById('chatSection').classList.remove('hidden');
+      
+      // Initialize chat
+      chatHistory = [
+        {
+          sender: 'navigator',
+          message: `Hi ${currentProfile.name}, I'm ${selectedNavigator.name}. I'm here to help you understand your options and answer any questions you have about clinical trials and treatment. What would you like to know?`
+        }
+      ];
+      
+      displayChatMessages();
+      document.getElementById('chatInput').focus();
+    }
+
+    // Display chat messages
+    function displayChatMessages() {
+      const container = document.getElementById('chatMessages');
+      container.innerHTML = chatHistory.map(msg => `
+        <div class="chat-message ${msg.sender}">
+          <strong>${msg.sender === 'navigator' ? selectedNavigator.name : 'You'}:</strong><br>
+          ${msg.message}
+        </div>
+      `).join('');
+      container.scrollTop = container.scrollHeight;
+    }
+
+    // Send message
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const message = input.value.trim();
+      
+      if (!message) return;
+
+      // Add user message
+      chatHistory.push({
+        sender: 'patient',
+        message: message
+      });
+
+      // Simulate navigator response
+      setTimeout(() => {
+        const responses = [
+          'That\'s a great question. Let me help you understand that better.',
+          'I understand your concern. Many patients ask about this.',
+          'Based on your profile, here\'s what I can tell you...',
+          'Let me connect you with more information about that.',
+          'Your safety and comfort are our top priority. Let me explain...'
+        ];
+        
+        chatHistory.push({
+          sender: 'navigator',
+          message: responses[Math.floor(Math.random() * responses.length)] + ' Feel free to ask me anything else!'
+        });
+        
+        displayChatMessages();
+      }, 1000);
+
+      input.value = '';
+      displayChatMessages();
+    }
+
+    // Display cultural resources
+    function displayCulturalResources() {
+      const container = document.getElementById('culturalContent');
+      const resource = culturalResources[currentProfile.communicationStyle];
+
+      if (!resource) {
+        container.innerHTML = '<p>Cultural resources are being prepared for your profile.</p>';
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="info-box">
+          <h3 class="info-box-title">${resource.title}</h3>
+          <p style="line-height: 1.6;">${resource.content}</p>
+        </div>
+        <div class="alert alert-info">
+          <strong>Faith-Based Resources Available</strong><br>
+          We respect that faith and spirituality are important to many patients. Clinical trials follow strict ethical guidelines and can align with your values. Ask your navigator about faith-based support resources.
+        </div>
+      `;
+    }
+
+    // Display testimonials
+    function displayTestimonials() {
+      const container = document.getElementById('testimonialsList');
+      container.innerHTML = testimonials.map(t => `
+        <div class="testimonial">
+          <div class="testimonial-quote">"${t.quote}"</div>
+          <div class="testimonial-author">— ${t.name}, ${t.background}</div>
+        </div>
+      `).join('');
+    }
+
+    // Display caregiver content
+    function displayCaregiverContent() {
+      const container = document.getElementById('caregiverContent');
+      const cancerInfo = cancerTypes[currentProfile.cancerType];
+
+      container.innerHTML = `
+        <div class="info-box">
+          <h3 class="info-box-title">Understanding ${cancerInfo.name}</h3>
+          <p style="margin-bottom: 16px; line-height: 1.6;">${cancerInfo.simpleExplanation}</p>
+          <p><strong>Treatment Options:</strong></p>
+          <ul class="info-list">
+            ${cancerInfo.treatments.map(t => `<li>${t}</li>`).join('')}
+          </ul>
+        </div>
+        <div class="info-box">
+          <h3 class="info-box-title">How You Can Help</h3>
+          <ul class="info-list">
+            <li>Attend appointments and take notes</li>
+            <li>Help your loved one understand treatment options</li>
+            <li>Ask questions on their behalf</li>
+            <li>Support them in making decisions</li>
+            <li>Help coordinate care and transportation</li>
+            <li>Provide emotional support</li>
+          </ul>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="showView('educationView')">View Education Materials</button>
+          <button class="btn btn-secondary" onclick="showView('rightsView')">Learn About Patient Rights</button>
+        </div>
+      `;
+    }
+
+    // Update admin dashboard
+    function updateAdminDashboard() {
+      document.getElementById('totalUsers').textContent = stats.totalUsers;
+      document.getElementById('trialMatches').textContent = stats.trialMatches;
+      document.getElementById('navigatorConnections').textContent = stats.navigatorConnections;
+      
+      // Calculate diversity score (simplified)
+      const diversityCount = currentProfile.culturalBackground && currentProfile.culturalBackground !== '' ? 1 : 0;
+      stats.diversityScore = stats.totalUsers > 0 ? Math.round((diversityCount / stats.totalUsers) * 100) : 0;
+      document.getElementById('diversityScore').textContent = stats.diversityScore + '%';
+    }
+
+    // Language change handler
+    function handleLanguageChange(e) {
+      const lang = e.target.value;
+      // In a real app, this would translate the UI
+      console.log('Language changed to:', lang);
+      
+      // Show language change notification
+      const translations = {
+        en: 'Language changed to English',
+        es: 'Idioma cambiado a Español',
+        zh: '语言已更改为中文',
+        ar: 'تم تغيير اللغة إلى العربية'
+      };
+      
+      alert(translations[lang] || 'Language changed');
+    }
+
+    // Accessibility functions
+    function toggleLargeText() {
+      largeTextEnabled = !largeTextEnabled;
+      document.body.classList.toggle('large-text', largeTextEnabled);
+      document.getElementById('fontSizeBtn').classList.toggle('active', largeTextEnabled);
+    }
+
+    function toggleHighContrast() {
+      highContrastEnabled = !highContrastEnabled;
+      document.body.classList.toggle('high-contrast', highContrastEnabled);
+      document.getElementById('contrastBtn').classList.toggle('active', highContrastEnabled);
+    }
+
+    function toggleTTS() {
+      ttsEnabled = !ttsEnabled;
+      document.getElementById('ttsBtn').classList.toggle('active', ttsEnabled);
+      
+      if (ttsEnabled) {
+        alert('Text-to-speech enabled. In a full version, selected text would be read aloud.');
+        // In a real app, implement Web Speech API
+      } else {
+        alert('Text-to-speech disabled.');
+      }
+    }
+
+    // Enter key for chat
+    document.addEventListener('DOMContentLoaded', function() {
+      const chatInput = document.getElementById('chatInput');
+      if (chatInput) {
+        chatInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            sendMessage();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
